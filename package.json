@@ -1,0 +1,26 @@
+{
+  "name": "cse341-projects",
+  "version": "1.0.0",
+  "description": "Learning Web Services with Brigham Young University - Idaho",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sirdave01/cse341-projects.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/sirdave01/cse341-projects/issues"
+  },
+  "homepage": "https://github.com/sirdave01/cse341-projects#readme",
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "mongodb": "^7.4.0"
+  }
+}
