@@ -1,0 +1,4 @@
+
+### Get Professional Data
+GET http://localhost:8080/professional
+Content-Type: application/json
