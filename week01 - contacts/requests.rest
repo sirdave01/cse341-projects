@@ -1,4 +1,15 @@
+### Get All Contacts
+GET http://localhost:3000/contacts
+Content-Type: application/json
 
-### Get Contact Data
-GET http://localhost:8080/contacts
+###
+
+### Get Single Contact by ID
+GET http://localhost:3000/contacts/60f7c9d8e4b0a5c123456789
+Content-Type: application/json
+
+###
+
+### Base URL Check
+GET http://localhost:3000/
 Content-Type: application/json
