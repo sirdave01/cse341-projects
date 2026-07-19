@@ -1,17 +1,20 @@
 {
   "name": "week01-contacts",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "CSE341 - Week 01 Contacts API",
   "main": "server.js",
   "type": "module",
   "scripts": {
     "dev": "nodemon server.js",
-    "start": "node server.js"
+    "start": "node server.js",
+    "swagger": "node swagger.js"
   },
   "dependencies": {
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
-    "mongoose": "^9.7.3"
+    "mongoose": "^9.7.3",
+    "swagger-autogen": "^2.23.7",
+    "swagger-ui-express": "^5.0.1"
   },
   "devDependencies": {
     "nodemon": "^3.1.14"

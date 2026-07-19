@@ -4,23 +4,29 @@ import mongoose from 'mongoose';
 const contactSchema = new mongoose.Schema({
     firstName: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     lastName: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     email: {
         type: String,
-        required: true
+        required: true,
+        lowercase: true,
+        trim: true
     },
     favoriteColor: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     birthday: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     }
 });
 
