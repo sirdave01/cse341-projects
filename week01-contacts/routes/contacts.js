@@ -1,10 +1,12 @@
 import express from 'express';
 
-import { getAllContacts, getContactById, 
-    createContact, updateContact,
+import {
+    getAllContacts,
+    getContactById,
+    createContact,
+    updateContact,
     deleteContact
 } from '../controllers/contacts.js';
-
 
 const router = express.Router();
 
@@ -14,13 +16,35 @@ router.get('/', getAllContacts);
 // GET single contact by ID
 router.get('/:id', getContactById);
 
-//CREATE contact
+// CREATE contact
+// #swagger.parameters['body'] = {
+//     in: 'body',
+//     required: true,
+//     schema: {
+//         firstName: 'John',
+//         lastName: 'Doe',
+//         email: 'john@example.com',
+//         favoriteColor: 'Blue',
+//         birthday: '1995-01-01'
+//     }
+// }
 router.post('/', createContact);
 
-//UPDATE contact
+// UPDATE contact
+// #swagger.parameters['body'] = {
+//     in: 'body',
+//     required: true,
+//     schema: {
+//         firstName: 'John',
+//         lastName: 'Doe',
+//         email: 'john@example.com',
+//         favoriteColor: 'Blue',
+//         birthday: '1995-01-01'
+//     }
+// }
 router.put('/:id', updateContact);
 
-//DELETE contact
+// DELETE contact
 router.delete('/:id', deleteContact);
 
 export default router;
