@@ -1,0 +1,202 @@
+
+const isProduction = process.env.NODE_ENV === 'production';
+
+const swaggerDocument = {
+    swagger: '2.0',
+
+    info: {
+        title: 'Contacts API',
+        description: 'A RESTful API for storing, retrieving, updating, and deleting contact information.',
+        version: '1.0.0'
+    },
+
+    host: isProduction
+        ? 'cse341-projects-8fxx.onrender.com'
+        : 'localhost:3000',
+
+    basePath: '/',
+
+    schemes: [
+        isProduction ? 'https' : 'http'
+    ],
+
+    paths: {
+        "/": {
+            "get": {
+                "summary": "Check API status",
+                "description": "Returns the current status of the Contacts API.",
+                "responses": {
+                    "200": {
+                        "description": "API is running successfully."
+                    }
+                }
+            }
+        },
+
+        "/contacts": {
+            "get": {
+                "summary": "Get all contacts",
+                "description": "Retrieves all contacts stored in the database.",
+                "responses": {
+                    "200": {
+                        "description": "Contacts retrieved successfully.",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Contact"
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error."
+                    }
+                }
+            },
+
+            "post": {
+                "summary": "Create a new contact",
+                "description": "Creates a new contact. All contact fields are required.",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Contact"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Contact created successfully."
+                    },
+                    "400": {
+                        "description": "Invalid contact data."
+                    }
+                }
+            }
+        },
+
+        "/contacts/{id}": {
+            "get": {
+                "summary": "Get a contact by ID",
+                "description": "Retrieves a single contact using its MongoDB ID.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Contact retrieved successfully.",
+                        "schema": {
+                            "$ref": "#/definitions/Contact"
+                        }
+                    },
+                    "404": {
+                        "description": "Contact not found."
+                    },
+                    "500": {
+                        "description": "Internal server error."
+                    }
+                }
+            },
+
+            "put": {
+                "summary": "Update a contact",
+                "description": "Updates an existing contact using its MongoDB ID.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Contact"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Contact updated successfully."
+                    },
+                    "400": {
+                        "description": "Invalid contact data."
+                    },
+                    "404": {
+                        "description": "Contact not found."
+                    }
+                }
+            },
+
+            "delete": {
+                "summary": "Delete a contact",
+                "description": "Deletes a contact using its MongoDB ID.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Contact deleted successfully."
+                    },
+                    "404": {
+                        "description": "Contact not found."
+                    },
+                    "500": {
+                        "description": "Internal server error."
+                    }
+                }
+            }
+        }
+    },
+
+    definitions: {
+        Contact: {
+            type: 'object',
+            required: [
+                'firstName',
+                'lastName',
+                'email',
+                'favoriteColor',
+                'birthday'
+            ],
+            properties: {
+                firstName: {
+                    type: 'string',
+                    example: 'Caleb'
+                },
+                lastName: {
+                    type: 'string',
+                    example: 'Osigwe'
+                },
+                email: {
+                    type: 'string',
+                    example: 'caleb@example.com'
+                },
+                favoriteColor: {
+                    type: 'string',
+                    example: 'Blue'
+                },
+                birthday: {
+                    type: 'string',
+                    example: '1995-01-01'
+                }
+            }
+        }
+    }
+};
+
+export default swaggerDocument;

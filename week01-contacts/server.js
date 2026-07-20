@@ -4,7 +4,7 @@ import swaggerUi from 'swagger-ui-express';
 
 import connectDB from './config/db.js';
 import contactsRoutes from './routes/contacts.js';
-import swaggerDocument from './swagger.json' with { type: 'json' };
+import swaggerDocument from './swaggerConfig.js';
 
 dotenv.config();
 
