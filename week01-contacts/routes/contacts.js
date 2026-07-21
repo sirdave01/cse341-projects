@@ -8,6 +8,10 @@ import {
     deleteContact
 } from '../controllers/contacts.js';
 
+import { validateContact } from '../validators/contact.js';
+
+import { validateRequest } from '../middleware/validateRequest.js';
+
 const router = express.Router();
 
 // GET all contacts
@@ -28,7 +32,8 @@ router.get('/:id', getContactById);
 //         birthday: '1995-01-01'
 //     }
 // }
-router.post('/', createContact);
+router.post('/', validateContact,
+    validateRequest, createContact);
 
 // UPDATE contact
 // #swagger.parameters['body'] = {
@@ -42,7 +47,8 @@ router.post('/', createContact);
 //         birthday: '1995-01-01'
 //     }
 // }
-router.put('/:id', updateContact);
+router.put('/:id',
+    validateContact, validateRequest, updateContact);
 
 // DELETE contact
 router.delete('/:id', deleteContact);
