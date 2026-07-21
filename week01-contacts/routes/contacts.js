@@ -10,6 +10,8 @@ import {
 
 import { validateContact } from '../validators/contact.js';
 
+import { validateId } from '../validators/idValidator.js';
+
 import { validateRequest } from '../middleware/validateRequest.js';
 
 const router = express.Router();
@@ -18,7 +20,7 @@ const router = express.Router();
 router.get('/', getAllContacts);
 
 // GET single contact by ID
-router.get('/:id', getContactById);
+router.get('/:id', validateId, getContactById);
 
 // CREATE contact
 // #swagger.parameters['body'] = {
@@ -51,6 +53,6 @@ router.put('/:id',
     validateContact, validateRequest, updateContact);
 
 // DELETE contact
-router.delete('/:id', deleteContact);
+router.delete('/:id', validateId, deleteContact);
 
 export default router;
